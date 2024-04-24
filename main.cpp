@@ -4,6 +4,7 @@ using namespace std;
 
 #include "ShoppingCart.h"
 #include "ItemToPurchase.h"
+// VS code
 
 void PrintMenu() {
    cout << "MENU" << endl;
