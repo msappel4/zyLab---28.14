@@ -4,21 +4,66 @@ using namespace std;
 
 #include "ShoppingCart.h"
 #include "ItemToPurchase.h"
-// VS code
 
 void PrintMenu() {
    cout << "MENU" << endl;
-   cout << "a - Add item to cart" << endl;
-   cout << "d - Remove item from cart" << endl;
-   cout << "c - Change item quantity" << endl;
-   cout << "i - Output items' descriptions" << endl;
-   cout << "o - Output shopping cart" << endl;
-   cout << "q - Quit" << endl;  
+      cout << "a - Add item to cart" << endl;
+      cout << "d - Remove item from cart" << endl;
+      cout << "c - Change item quantity" << endl;
+      cout << "i - Output items' descriptions" << endl;
+      cout << "o - Output shopping cart" << endl;
+      cout << "q - Quit" << endl;  
 }
 
 void ExecuteMenu(char option, ShoppingCart& theCart) {
-   /* Type your code here */
-   
+   switch (option){
+      case 'a':
+         string itemName;
+         string itemDescription;
+         int itemPrice;
+         int itemQuantity;
+         cout << "ADD ITEM TO CART" << endl;
+         cout << "Enter the item name:" << endl;
+         getline (cin, itemName);
+         cout << "Enter the item description:" << endl;
+         getline (cin, itemDescription);
+         cout << "Enter the item price:" << endl;
+         cin >> itemPrice;
+         cout << "Enter the item quantity:" << endl;
+         cin >> itemQuantity;
+         ItemToPurchase newItem(itemName, itemDescription, itemPrice, itemQuantity);
+         theCart.AddItem(newItem);
+         break;
+      case 'd':
+         string itemName;
+         cout << "REMOVE ITEM FROM CART" << endl;
+         cout << "Enter the name of the item to remove:" << endl;
+         getline (cin, itemName);
+         theCart.RemoveItem (itemName);
+         break;
+      case 'c':
+         string itemName;
+         int newQuantity;
+         cout << "CHANGE ITEM QUANTITY" << endl;
+         cout << "Enter the item name:" << endl;
+         getline (cin, itemName);
+         cout << "Enter the new quantity:" << endl;
+         cin >> newQuantity;
+         ItemToPurchase modifiedItem (itemName, "", 0, newQuantity);
+         the Cart.ModifyItem (modifiedItem);
+         break;
+      case 'i':
+         theCart.PrintDescriptions();
+         break;
+      case 'o':
+         theCart.PrintTotal();
+         break;
+      case 'q':
+         cout << "Quitting" << endl;
+         break;
+      default:
+         cout << "Invalid option. Please try again." << endl;
+   }
 }
 
 int main() {
@@ -37,25 +82,10 @@ int main() {
    cout << "Choose an option:";
    char option;
    cin >> option;
-   bool valid;
-   
-   while (option != 'q'){
-      
-      if (option == 'a' || option == 'd' || option == 'c' || option == 'i' || option == 'o' || option == 'q'){
-         valid = true;
-         if (option == 'q'){
-            break;
-         }
-         else {
-            ExecuteMenu (option, cart);
-         }
-      }
-      else {
-         valid = false;
-         cout << "Enter a valid choice: " << endl;
-         cin >> option;
-      }
-   }
+   do {
+      ExecuteMenu (option, cart);
+      cin >> option;
+   } while (option != 'q');
  
    return 0;
 }
