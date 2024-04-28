@@ -7,6 +7,6 @@ Step 2 - Mia - Done
 
 Step 3 - Mia - Done
 
-Step 4 -
+Step 4 - Megan - Done
 
-Step 5 -
+Step 5 - Mia & Megan -
