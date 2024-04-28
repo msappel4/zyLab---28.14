@@ -33,18 +33,18 @@ void ShoppingCart::AddItem(ItemToPurchase item) {
 
 // Note - probably not correct, FINISH
 void ShoppingCart::RemoveItem(string itemName) {
-  try {
-    for (int i = 0; i < (cartItems.size() + 1); i++) {
-        if ((cartItems.at(i)).GetName() == itemName) {
-          cartItems.erase(i);
-          break
-        }
-    }
-    throw logic_error("Item not found in cart.");
+  bool isInCart = false;
+  for (int i = 0; i < cartItems.size(); i++) {
+     if (cartItems.at(i).GetName() == itemName) {
+        cartItems.erase(cartItems.begin() + i);
+        isInCart = true;
+        break;
+      }
+   }
+  if (!isInCart) {
+     cout << "Item not found in cart. Nothing removed." << endl;
   }
-  catch (logic_error& excpt) {
-    cout << "Item not found in cart. Nothing removed." << endl;
-  }
+}
 
 // Note - also probably not correct, FINISH
 void ShoppingCart::ModifyItem(ItemToPurchase item) {
