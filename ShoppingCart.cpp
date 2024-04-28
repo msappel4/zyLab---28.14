@@ -31,7 +31,6 @@ void ShoppingCart::AddItem(ItemToPurchase item) {
   cartItems.push_back(item);
 }
 
-// Note - probably not correct, FINISH
 void ShoppingCart::RemoveItem(string itemName) {
   bool isInCart = false;
   for (int i = 0; i < cartItems.size(); i++) {
@@ -48,17 +47,28 @@ void ShoppingCart::RemoveItem(string itemName) {
 
 // Note - also probably not correct, FINISH
 void ShoppingCart::ModifyItem(ItemToPurchase item) {
-  try {
-    for (int i = 0; i < (cartItems.size() + 1); i++) {
-      if (item.GetDescription() != "none") {
-        if (item.GetPrice(0 != 0) {
-          if (item.GetQuantity() != 0) {
-
-          }
-        }
+   bool isInCart2 = false;
+   for (int i = 0; i < cartItems.size(); i++) {
+      if (cartItems.at(i).GetName() == item.GetName()) {
+         isInCart2 = true;
+         if (cartItems.at(i).GetName() != "none") {
+            cartItems.at(i).SetName("none");
+         }
+         if (cartItems.at(i).GetPrice() != 0) {
+            cartItems.at(i).SetPrice(0);
+         }
+         if (cartItems.at(i).GetQuantity() != 0) {
+            cartItems.at(i).SetPrice(0);
+         }
+         if (cartItems.at(i).GetDescription() != "none") {
+            cartItems.at(i).SetDescription("none");
+         }
+         break;
       }
-    }
-  }
+   }
+   if (!isInCart2) {
+     cout << "Item not found in cart. Nothing modified." << endl;
+   }
 }
 
 int ShoppingCart::GetNumItemsInCart() {
@@ -69,10 +79,10 @@ int ShoppingCart::GetNumItemsInCart() {
   return numTotal;
 }
 
-int ShoppingCart::GetCostOfCart() {
+double ShoppingCart::GetCostOfCart() {
   int costTotal = 0;
   for (int i = 0; i < cartItems.size(); i++) {
-    costTotal += (cartItems.at(i)).GetPrice());
+    costTotal += (cartItems.at(i).GetPrice() * cartItems.at(i).GetQuantity());
   }
   return costTotal;
 }
