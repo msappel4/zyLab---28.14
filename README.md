@@ -3,7 +3,7 @@ Lab zybooks 28.14
 
 Step 1 - Megan - Done
 
-Step 2 -
+Step 2 - Mia - Done
 
 Step 3 - 
 
