@@ -16,7 +16,7 @@ ShoppingCart::ShoppingCart() {
 
 ShoppingCart::ShoppingCart(string name, string date) {
   customerName = name;
-  customerDate = date;
+  currentDate = date;
   vector <ItemToPurchase> cartItems;
 }
 
@@ -24,8 +24,8 @@ string ShoppingCart::GetCustomerName() {
   return customerName;
 }
 
-string ShoppingCart::GetCustomerDate() {
-  return customerDate;
+string ShoppingCart::GetDate() {
+  return currentDate;
 }
 
 void ShoppingCart::AddItem(ItemToPurchase item) {
@@ -79,7 +79,7 @@ int ShoppingCart::GetCostOfCart() {
 }
 
 void ShoppingCart::PrintTotal() {
-  cout << customerName << "'s Shopping Cart - " << customerDate << endl;
+  cout << customerName << "'s Shopping Cart - " << currentDate << endl;
   cout << "Number of Items: " << GetNumItemsInCart() << endl;
   cout << endl;
   for (int i = 0; i < cartItems.size(); i++) {
@@ -90,7 +90,7 @@ void ShoppingCart::PrintTotal() {
 }
 
 void ShoppingCart::PrintDescriptions() {
-  cout << customerName << "'s Shopping Cart - " << customerDate << endl;
+  cout << customerName << "'s Shopping Cart - " << currentDate << endl;
   cout << endl;
   cout << "Item Descriptions" << endl;
   for (int i = 0; i < cartItems.size(); i++) {
