@@ -5,7 +5,7 @@ Step 1 - Megan - Done
 
 Step 2 - Mia - Done
 
-Step 3 -
+Step 3 - Mia - Done
 
 Step 4 -
 
