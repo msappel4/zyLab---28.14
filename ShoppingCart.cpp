@@ -94,6 +94,7 @@ void ShoppingCart::PrintTotal() {
   cout << endl;
   if (numItems == 0) {
      cout << "SHOPPING CART IS EMPTY" << endl;
+  }
   for (int i = 0; i < cartItems.size(); i++) {
     cout << (cartItems.at(i)).GetName() << " " << (cartItems.at(i)).GetQuantity() << " @ $" << (cartItems.at(i)).GetPrice() << endl;
   }
